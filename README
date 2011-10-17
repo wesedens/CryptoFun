@@ -1,0 +1,1 @@
+This is an initial code structure for the CryptoFun project. It is only a hello world program at this point. RUNNING  to run this you must have ANT installed on your machine.    type: 'ant execute' into your terminal when in the base directory. 

@@ -1,0 +1,42 @@
+<project name="CryptoFun" default="compile" basedir=".">
+	<description>
+		Ant script for Keenan and Wes Crypto Program
+	</description>
+	
+	<!-- Set properties used for project -->
+	<!-- Set up folder structure for a local web application ClassApp -->
+	<property name="src" location="${basedir}/src"/>
+	<property name="classes" location="${basedir}/classes"/>
+	<property name="lib" location="${basedir}/lib"/>
+
+	<!-- Make sure class directory exists before compiling -->
+	<target name="init" depends="clean">
+		<mkdir dir="${classes}"/>
+	</target>
+
+	<!-- Now compile all java source files in directory -->
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${classes}">
+		  <!-- include all java source files under ${src} -->
+		  <!-- so it will include packaged files as well  -->
+		  <include name="**/*.java"/>
+		  <classpath>
+			    <pathelement path="${classes}"/>
+		  </classpath>
+		</javac>
+	</target>
+	
+	<!-- Provide ability to run specific classes -->
+	<target name="execute" depends="compile">
+		<java classname="kewe.test.HelloWorld">
+			<classpath>
+				<pathelement path="${classes}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<!-- Option to remove class files for -->
+	<target name="clean">
+		<delete dir="${classes}"/>
+	</target>
+</project> 
